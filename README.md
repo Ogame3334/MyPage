@@ -1,3 +1,3 @@
-# Ogame's Portfolio
+# Ogame's Page
 
-https://ogame3334.github.io/OgamePortfolio/
+https://ogame3334.github.io/MyPage/
