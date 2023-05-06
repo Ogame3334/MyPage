@@ -1,3 +1,6 @@
 *.ts
 *package.json
 *tsconfig.json
+*package-lock.json
+*watch-files.sh
+*node_modules
