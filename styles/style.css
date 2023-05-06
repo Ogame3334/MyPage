@@ -5,8 +5,8 @@
 .header {
     width: 100%;
     height: var(--header-height);
-    background-color: white;
-    border-bottom: solid 1px black;
+    background-color: #f7ffe5;
+    border-bottom: solid 1px #DEE5CE;
     position: fixed;
     top: 0;
     left: 0;
@@ -14,14 +14,40 @@
     z-index: 999;
 }
 
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header-title {
+    width: 300px;
+}
+
 .menu-button {
-    --button-size: calc(var(var(--header-height)) / 2);
+    --button-size: calc(var(--header-height) / 2);
     position: absolute;
     top: calc(var(--header-height) / 4);
     right: calc(var(--header-height) / 4);
     width: var(--button-size);
     height: var(--button-size);
-    background-color: aqua;
+    gap: calc(var(--header-height) / 14);
+}
+
+.menu-button:hover .menu-button-line{
+    background-color: black;
+}
+
+.menu-button-line {
+    width: calc(var(--header-height) / 2.5);
+    height: calc(var(--header-height) / 14);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: gray;
+    border-radius: 10px;
+    transition: 0.3s;
+    position: relative;
+    top: 0px;
+    opacity: 1;
 }
 
 .main {
