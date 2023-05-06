@@ -1,10 +1,10 @@
 :root {
-    --header-height: 100px;
+    --header-default-height: 100px;
 }
 
 .header {
     width: 100%;
-    height: var(--header-height);
+    height: auto;
     background-color: #f7ffe5;
     border-bottom: solid 1px #DEE5CE;
     position: fixed;
@@ -17,20 +17,32 @@
 .header-content {
     display: flex;
     flex-wrap: wrap;
+    height: auto;
 }
 
 .header-title {
+    padding-left: 20px;
     width: 300px;
+    height: 100px;
+}
+
+.header-title:hover {
+    filter:brightness(0.9);
 }
 
 .menu-button {
-    --button-size: calc(var(--header-height) / 2);
-    position: absolute;
+    height: calc(var(--header-default-height) / 2);
+    --button-size: calc(var(--header-default-height) / 2);
+    margin-left: auto;
+    margin-right: calc(var(--header-default-height) / 4);
+    margin-top: calc(var(--header-default-height) / 4);
+    margin-bottom: calc(var(--header-default-height) / 4);
+    /* position: absolute;
     top: calc(var(--header-height) / 4);
     right: calc(var(--header-height) / 4);
     width: var(--button-size);
     height: var(--button-size);
-    gap: calc(var(--header-height) / 14);
+    gap: calc(var(--header-height) / 14); */
 }
 
 .menu-button:hover .menu-button-line{
@@ -38,8 +50,8 @@
 }
 
 .menu-button-line {
-    width: calc(var(--header-height) / 2.5);
-    height: calc(var(--header-height) / 14);
+    width: calc(var(--header-default-height) / 2.5);
+    height: calc(var(--header-default-height) / 14);
     margin-left: auto;
     margin-right: auto;
     background-color: gray;
@@ -51,6 +63,9 @@
 }
 
 .main {
-    position: absolute;
-    top: var(--header-height);
+    width: 100%;
+    position: relative;
+    top: var(--header-default-height);
+    left: 0px;
+    right: 0px;
 }
