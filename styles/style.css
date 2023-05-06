@@ -1,6 +1,65 @@
 :root {
+    --display-width: 1920px;
+    --display-height: 1080px;
     --header-default-height: 100px;
 }
+
+.start-up-back {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    z-index: 400;
+    transition: 2s;
+}
+
+.start-up-square {
+    transform-origin: center;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    width: 0px;
+    height: 0px;
+    outline: 3px solid white;
+    z-index: 401;
+    transition: 1.5s;
+}
+
+/* .start-up-square-anim-0-class {
+    animation: start-up-square-anim-0 1s ease-in-out ;
+}
+
+.start-up-square-anim-1-class {
+    animation: start-up-square-anim-1 1s ease-in-out ;
+}
+
+@keyframes start-up-square-anim-0 {
+    0% {
+        width: 0px;
+        height: 0px;
+        top: calc(50% - 0px);
+        left: calc(30% - 0px);
+        transform: rotate(0deg);
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        top: calc(50% - 50px);
+        left: calc(30% - 50px);
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes start-up-square-anim-0 {
+    0% {
+
+    }
+    100% {
+
+    }
+} */
 
 .header {
     width: 100%;
@@ -11,7 +70,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 200;
 }
 
 .header-content {
