@@ -112,7 +112,22 @@ function menuButtonOnClicked() {
         setTimeout(() => { canClickMenuButton = true; }, 1000);
     }
 }
+function onAccess() {
+    const sessionKey = 'ogamemidorikawa';
+    const sessionValue = 'true';
+    //sessionStorageにsessionKeyというデータの有無を判別
+    if (sessionStorage.getItem(sessionKey) != sessionValue) {
+        startUpAnim();
+        //sessionStorageにデータを追加
+        sessionStorage.setItem(sessionKey, sessionValue);
+    }
+    else {
+        const start_up = document.getElementById('start-up');
+        start_up.remove();
+    }
+}
+// 読み込み時に実行↓
 const button = document.getElementById('menu-button');
 button.addEventListener('click', menuButtonOnClicked);
 window.addEventListener('resize', init);
-startUpAnim();
+onAccess();

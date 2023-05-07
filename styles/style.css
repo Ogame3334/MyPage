@@ -105,8 +105,16 @@
     transition: 1s;
 }
 
+.header-subtitle-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: auto;
+}
+
 .header-subtitle-name {
     position: relative;
+    font: bold;
     font-size: 30px;
 }
 
