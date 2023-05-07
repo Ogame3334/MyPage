@@ -2,6 +2,7 @@
     --display-width: 1920px;
     --display-height: 1080px;
     --header-default-height: 100px;
+    --header-background-color: #f7ffe5;
 }
 
 .start-up-back {
@@ -64,8 +65,8 @@
 .header {
     width: 100%;
     height: auto;
-    background-color: #f7ffe5;
-    border-bottom: solid 1px #DEE5CE;
+    background-color: var(--header-background-color);
+    border-bottom: solid 1px #dee5ce;
     position: fixed;
     top: 0;
     left: 0;
@@ -85,8 +86,28 @@
     height: 100px;
 }
 
-.header-title:hover {
-    filter:brightness(0.9);
+.header-title a {
+    color: black;
+    text-decoration: none;
+}
+
+.header-subtitle {
+    width: 100%;
+    height: 50px;
+    background-color: var(--header-background-color);
+    border-bottom: solid 1px #dee5ce;
+    position: fixed;
+    top: 50px;
+    /* top: calc(var(--header-default-height)); */
+    left: 0;
+    right: 0;
+    z-index: 150;
+    transition: 1s;
+}
+
+.header-subtitle-name {
+    position: relative;
+    font-size: 30px;
 }
 
 .menu-button {
@@ -102,6 +123,10 @@
     width: var(--button-size);
     height: var(--button-size);
     gap: calc(var(--header-height) / 14); */
+}
+
+.menu-button:hover {
+    cursor: pointer;
 }
 
 .menu-button:hover .menu-button-line{
