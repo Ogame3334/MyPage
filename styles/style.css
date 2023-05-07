@@ -2,7 +2,8 @@
     --display-width: 1920px;
     --display-height: 1080px;
     --header-default-height: 100px;
-    --header-background-color: #f7ffe5;
+    --header-background-color: #e0ff97;
+    /* --header-background-color: #f7ffe5; */
 }
 
 .start-up-back {
@@ -116,6 +117,7 @@
     position: relative;
     font: bold;
     font-size: 30px;
+    padding: auto 100px;
 }
 
 .menu-button {
@@ -156,8 +158,59 @@
 
 .main {
     width: 100%;
-    position: relative;
+    position: absolute;
     top: var(--header-default-height);
     left: 0px;
     right: 0px;
+}
+
+.main-contents-container .main-content{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.main-background-img {
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    filter: opacity(0.3);
+}
+
+.main-page-button {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 300px;
+    height: 60px;
+    border-radius: 30px;
+    outline: solid 3px black;
+    font-size: 25px;
+    text-align: center;
+    line-height: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: 0.5s;
+}
+
+.main-page-button:hover{
+    background-color: rgba(200, 200, 200, 0.7);
+    outline-color: rgb(0, 80, 0);
+    cursor: pointer;
+}
+
+.main-page-button-inner {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    width: 0px;
+    height: 44px;
+    border-top: solid 3px rgb(0, 180, 0);
+    border-bottom: solid 3px rgb(0, 180, 0);
+    transition: 0.5s;
+}
+
+.main-page-button:hover .main-page-button-inner {
+    width: 240px;
 }
