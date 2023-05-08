@@ -17,9 +17,6 @@
         <meta property="og:title" content="緑獺おがめのマイページ" /> 
         <meta property="og:description" content="緑獺おがめのマイページ - Top" /> 
         <meta property="og:image" content="../../images/icon.png" />
-        
-    </head>
-    <body>
         <script type="importmap">
             {
                 "imports": {
@@ -27,6 +24,10 @@
                 }
             }
         </script>
+        <!-- <script type="module">import * as marked from 'marked';</script> -->
+        
+    </head>
+    <body>
         <div class="start-up", id="start-up">
             <div class="start-up-back", id="start-up-back"></div>
             <div class="start-up-square" id="start-up-square-left" style="outline-color: yellow;"></div>
@@ -60,12 +61,11 @@
             </div>
             <main class="main" id="main">
                 <div class="blog-main-content" id="blog-main-content">
+                    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
                     <script>
-                        import * as marked from 'marked';
                         var sentence = "";
                         var xhr = new XMLHttpRequest();
                         xhr.open('GET', './temp.md', true);
-                        xhr.setRequestHeader('Access-Control-Allow-Origin', '*'); // CORSの許可を設定
 
                         xhr.onload = function() {
                             if (xhr.status === 200) {
@@ -78,7 +78,7 @@
 
                         xhr.send();
 
-                        const viewHtml = marked(sentence);
+                        const viewHtml = marked(sentence)
                         // var str = "文字列テスト";
                         // var source = [ str ];
                         // const file_property_bag = {
