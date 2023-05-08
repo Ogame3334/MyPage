@@ -106,7 +106,7 @@
     transition: 1s;
 }
 
-.header-subtitle-content {
+.header-subtitle-contents {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -192,12 +192,15 @@
     line-height: 60px;
     background-color: rgba(255, 255, 255, 0.7);
     transition: 0.5s;
+    text-decoration: none;
+    color: black;
 }
 
 .main-page-button:hover{
     background-color: rgba(200, 200, 200, 0.7);
     outline-color: rgb(0, 80, 0);
-    cursor: pointer;
+    color: rgb(0, 80, 0);
+    /* cursor: pointer; */
 }
 
 .main-page-button-inner {

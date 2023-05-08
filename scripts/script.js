@@ -59,20 +59,6 @@ function startUpAnim() {
     // square_left.classList.add('start-up-square-anim-0-class');
     // setTimeout(() => {square_left.classList.remove('start-up-square-anim-0-class'); square_left.classList.add('start-up-square-anim-1-class')}, 1000);
 }
-function sleep(waitSec, callbackFunc) {
-    var spanedSec = 0;
-    var waitFunc = function () {
-        spanedSec += 0.1;
-        if (spanedSec >= waitSec) {
-            if (callbackFunc)
-                callbackFunc();
-            return;
-        }
-        clearTimeout(id);
-        id = setTimeout(waitFunc, 100);
-    };
-    var id = setTimeout(waitFunc, 100);
-}
 var menuButtonIsClicked = false;
 var canClickMenuButton = true;
 function menuButtonOnClicked() {
@@ -113,6 +99,12 @@ function menuButtonOnClicked() {
     }
 }
 function onAccess() {
+    const param = window.location.search;
+    if (/\?anim=false/.exec(param)) {
+        const start_up = document.getElementById('start-up');
+        start_up.remove();
+        return;
+    }
     const sessionKey = 'ogamemidorikawa';
     const sessionValue = 'true';
     //sessionStorageにsessionKeyというデータの有無を判別
