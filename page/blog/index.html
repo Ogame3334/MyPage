@@ -3,6 +3,7 @@
     <head id="head">
         <title>Ogame's Page</title>
         <link href="../../styles/style.css" rel="stylesheet">
+        <link href="../../styles/blog.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="../../images/icon.jpg">
         <link rel="shortcut icon" href="../../images/icon.jpg" type="image/x-icon" />
         <link rel="apple-touch-icon-precomposed" href="../../images/icon.jpg" />
@@ -19,6 +20,13 @@
         
     </head>
     <body>
+        <script type="importmap">
+            {
+                "imports": {
+                    "marked": "https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"
+                }
+            }
+        </script>
         <div class="start-up", id="start-up">
             <div class="start-up-back", id="start-up-back"></div>
             <div class="start-up-square" id="start-up-square-left" style="outline-color: yellow;"></div>
@@ -51,7 +59,47 @@
                 </header>
             </div>
             <main class="main" id="main">
-                
+                <div class="blog-main-content" id="blog-main-content">
+                    <script>
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', './temp.md', true);
+
+                        xhr.onload = function() {
+                            if (xhr.status === 200) {
+                                console.log(xhr.responseText); // ファイルの内容をコンソールに表示
+                            } else {
+                                console.error(xhr.statusText);
+                            }
+                        };
+
+                        xhr.send();
+
+                        // var str = "文字列テスト";
+                        // var source = [ str ];
+                        // const file_property_bag = {
+                        //     type: "text/plain",
+                        //     lastModified: 0
+                        // };
+                        // const file = new File(source, './hoge.txt', file_property_bag);
+                        // var file_reader = new FileReader();
+
+                        // file_reader.readAsDataURL(file);
+
+                        // file_reader.onloadend = function(e){
+                        //     console.log(file_reader.result);
+                        // }
+
+                        // file_reader.onloadend = function(e){
+                        //     if(file_reader.error) return;
+                        //     console.log(file_reader.result); // "文字列テスト"
+                        // };
+
+                        // file_reader.readAsText(file);
+                        // file_reader.result
+
+                        var hoge = document.getElementById('blog-main-content');
+                    </script>
+                </div>
             </main>
         </div>
         <script src="../../scripts/script.js"></script>
