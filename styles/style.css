@@ -118,6 +118,10 @@
     font: bold;
     font-size: 30px;
     padding: auto 100px;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 80, 0);
+    flex-grow: 1;
 }
 
 .menu-button {
