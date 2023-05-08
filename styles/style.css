@@ -6,6 +6,10 @@
     /* --header-background-color: #f7ffe5; */
 }
 
+body {
+    background-color: #fcfff6;
+}
+
 .start-up-back {
     position: absolute;
     top: 0px;
@@ -176,7 +180,15 @@
     right: 0px;
 }
 
-.main-contents-container .main-content{
+.main-contents-container {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.main-content{
     width: 100%;
     position: absolute;
     top: 0px;
@@ -222,16 +234,26 @@
     transition: 0.5s;
     text-decoration: none;
     color: black;
+    overflow: hidden;
+}
+
+.main-page-button-inner {
+    position: absolute;
+    width: 0px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
 }
 
 .main-page-button:hover{
-    background-color: rgb(200, 200, 200);
+    /* background-color: rgb(200, 200, 200); */
     outline-color: rgb(0, 80, 0);
     color: rgb(0, 80, 0);
     /* cursor: pointer; */
 }
 
-.main-page-button-inner {
+/* .main-page-button-inner {
     position: absolute;
     top: 5px;
     left: 30px;
@@ -240,8 +262,8 @@
     border-top: solid 3px rgb(0, 180, 0);
     border-bottom: solid 3px rgb(0, 180, 0);
     transition: 0.5s;
-}
+} */
 
 .main-page-button:hover .main-page-button-inner {
-    width: 240px;
+    width: 300px;
 }
