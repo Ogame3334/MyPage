@@ -61,12 +61,15 @@
             <main class="main" id="main">
                 <div class="blog-main-content" id="blog-main-content">
                     <script>
+                        var sentence = "";
                         var xhr = new XMLHttpRequest();
                         xhr.open('GET', './temp.md', true);
+                        xhr.setRequestHeader('Access-Control-Allow-Origin', '*'); // CORSの許可を設定
 
                         xhr.onload = function() {
                             if (xhr.status === 200) {
                                 console.log(xhr.responseText); // ファイルの内容をコンソールに表示
+                                sentence = xhr.responseText;
                             } else {
                                 console.error(xhr.statusText);
                             }
@@ -74,6 +77,7 @@
 
                         xhr.send();
 
+                        const viewHtml = marked(sentence);
                         // var str = "文字列テスト";
                         // var source = [ str ];
                         // const file_property_bag = {
@@ -98,6 +102,7 @@
                         // file_reader.result
 
                         var hoge = document.getElementById('blog-main-content');
+                        hoge.innerHTML = viewHtml;
                     </script>
                 </div>
             </main>
