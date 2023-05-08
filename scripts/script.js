@@ -79,7 +79,7 @@ function menuButtonOnClicked() {
             setTimeout(() => { lines[0].style.top = '0'; }, 700);
             setTimeout(() => { lines[1].style.opacity = '1'; }, 700);
             setTimeout(() => { lines[2].style.top = '0'; }, 700);
-            header_subtitle.style.top = '50px';
+            header_subtitle.style.top = '30px';
             menuButtonIsClicked = false;
         }
         else {
