@@ -52,17 +52,27 @@
                 </header>
             </div>
             <main class="main" id="main" style="display: flex">
-                <div class="blog-side-menu">
-                    <h2>目次</h2>
-                    <a href="#headline-0"><li>このサイトについて</li></a>
-                    <a href="#headline-1"><li>二つ目の見出し</li></a>
-                    <script>
-    
-                    </script>
-                </div>
+                <div class="blog-side-menu" id="blog-side-menu"></div>
                 <div class="blog-main-content" id="blog-main-content">
                     <script>
+                        class headline {
+                            constructor(id_name, sentence) {
+                                this.id_name = id_name;
+                                this.sentence = sentence;
+                            }
+                        }
+
+                        function gen_side_menu_html(headline_list) {
+                            var side_menu = document.getElementById('blog-side-menu');
+                            side_menu.innerHTML = "<h2>目次</h2>\n";
+                            headline_list.forEach(element => {
+                                side_menu.innerHTML += `<a href="#${element.id_name}"><li>${element.sentence}</li></a>\n`
+                            });
+                        }
+
                         async function MDtoHtml(data) {
+                            var headline_list = [];
+
                             await markdown.ready;
 
                             var md = markdown.parse(md_data);
@@ -77,10 +87,15 @@
                                 if(temp == md){
                                     break;
                                 }
+                                var temp_headline_name = temp.split(`id="headline-${i}">`)[1].split('</h2>')[0];
+                                temp_headline = new headline(`headline-${i}`, temp_headline_name);
+                                headline_list.push(temp_headline);
                                 md = temp;
                                 i++;
                             }
                             
+                            gen_side_menu_html(headline_list);
+
                             var hoge = document.getElementById('blog-main-content');
                             hoge.innerHTML = md;
                         }
@@ -90,14 +105,12 @@
                         var blog_num = "";
 
                         const param = window.location.search;
-                        console.log(param);
                         if(/\?n=\d/.test(param)) {
                             blog_num = ('000' + param.replace('?n=', '')).slice(-3);
                             
                             fetch(`./page/blog_${blog_num}/blog_${blog_num}.md`)
                                 .then(response => response.text())
                                 .then(data => {
-                                    console.log(data);
                                     md_data = data;
     
                                     MDtoHtml(data);
