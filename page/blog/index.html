@@ -51,16 +51,35 @@
                     </div>
                 </header>
             </div>
-            <main class="main" id="main">
+            <main class="main" id="main" style="display: flex">
+                <div class="blog-side-menu">
+                    <h2>目次</h2>
+                    <a href="#headline-0"><li>このサイトについて</li></a>
+                    <a href="#headline-1"><li>二つ目の見出し</li></a>
+                    <script>
+    
+                    </script>
+                </div>
                 <div class="blog-main-content" id="blog-main-content">
                     <script>
                         async function MDtoHtml(data) {
                             await markdown.ready;
 
                             var md = markdown.parse(md_data);
-                            md = md.replace('<table>', '<table border=\"1\">');
-                            md = md.replace('<h1>', '<h1 id=\"title\">');
-                            md = md.replace('<h2>', '<h2 class=\"headline\">');
+                            md = md.replace('<table>', '<table border="1">');
+                            md = md.replace('<h1>', '<h1 id="title">');
+                            md = md.replaceAll('<a id="" class="anchor" aria-hidden="true" href="#"></a>', '');
+                            md = md.replaceAll('<h2>', '<h2 class="headline">');
+                            
+                            var i = 0;
+                            while(true) {
+                                var temp = md.replace('<h2 class="headline">', `<h2 class="headline anchor" id="headline-${i}">`);
+                                if(temp == md){
+                                    break;
+                                }
+                                md = temp;
+                                i++;
+                            }
                             
                             var hoge = document.getElementById('blog-main-content');
                             hoge.innerHTML = md;
