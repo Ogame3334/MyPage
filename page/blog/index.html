@@ -17,14 +17,6 @@
         <meta property="og:title" content="緑獺おがめのマイページ" /> 
         <meta property="og:description" content="緑獺おがめのマイページ - Top" /> 
         <meta property="og:image" content="../../images/icon.png" />
-        <script type="importmap">
-            {
-                "imports": {
-                    "marked": "https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"
-                }
-            }
-        </script>
-        <!-- <script type="module">import * as marked from 'marked';</script> -->
         
     </head>
     <body>
@@ -61,7 +53,6 @@
             </div>
             <main class="main" id="main">
                 <div class="blog-main-content" id="blog-main-content">
-                    <!-- <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script> -->
                     <script>
                         async function MDtoHtml(data) {
                             await markdown.ready;
@@ -77,31 +68,29 @@
 
                         var md_data = "";
 
+                        var blog_num = "";
+
                         const param = window.location.search;
                         console.log(param);
                         if(/\?n=\d/.test(param)) {
-                            console.log(param.replace('?n=', ''));
+                            blog_num = ('000' + param.replace('?n=', '')).slice(-3);
+                            
+                            fetch(`./page/blog_${blog_num}/blog_${blog_num}.md`)
+                                .then(response => response.text())
+                                .then(data => {
+                                    console.log(data);
+                                    md_data = data;
+    
+                                    MDtoHtml(data);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        }
+                        else{
+
                         }
 
-                        fetch('./page/blog_000/blog_000.md')
-                            .then(response => response.text())
-                            .then(data => {
-                                console.log(data); // ファイルの内容が表示されます
-                                md_data = data;
-
-                                MDtoHtml(data);
-                                // window.onload = async () => {
-                                //     await markdown.ready;
-
-                                //     var md = markdown.parse(md_data);
-                                //     console.log('result: ' + md);
-                                //     var hoge = document.getElementById('blog-main-content');
-                                //     hoge.innerHTML = md;
-                                // };     
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });
                     </script>
                 </div>
             </main>
