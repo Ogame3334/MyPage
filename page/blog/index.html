@@ -82,6 +82,15 @@
 
             // xhr.send();
 
+            async function MDtoHtml(data) {
+                await markdown.ready;
+
+                var md = markdown.parse(md_data);
+                console.log('result: ' + md);
+                var hoge = document.getElementById('blog-main-content');
+                hoge.innerHTML = md;
+            }
+
             var md_data = "";
 
             fetch('./temp.md')
@@ -89,19 +98,22 @@
                 .then(data => {
                     console.log(data); // ファイルの内容が表示されます
                     md_data = data;
+
+                    MDtoHtml(data);
+                    // window.onload = async () => {
+                    //     await markdown.ready;
+
+                    //     var md = markdown.parse(md_data);
+                    //     console.log('result: ' + md);
+                    //     var hoge = document.getElementById('blog-main-content');
+                    //     hoge.innerHTML = md;
+                    // };     
                 })
                 .catch(error => {
                     console.error(error);
                 });
 
-            window.onload = async () => {
-                await markdown.ready;
-
-                var md = markdown.parse(md_data);
-                console.log('result: ' + md);
-                var hoge = document.getElementById('blog-main-content');
-                hoge.innerHTML = md;
-            };            
+                   
         </script>
         <script src="../../scripts/script.js"></script>
     </body>
