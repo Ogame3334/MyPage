@@ -1,6 +1,24 @@
+.blog-main-content #title {
+    border-bottom: solid 1px gray;
+}
+
+.blog-main-content table {
+    border-width: 1px;
+    border-collapse: collapse;
+}
+
+.blog-main-content .date {
+    text-align: right;
+    color: gray;
+}
+
 .blog-main-content {
     position: absolute;
+    top: 30px;
     left: 30%;
-    width: 900px;
-    background-color: rgb(255, 255, 183);
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    /* box-shadow: 0px 0px 10px rgb(255, 255, 183); */
+    box-shadow: 0px 0px 5px #7fffd480;
 }

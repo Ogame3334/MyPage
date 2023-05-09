@@ -62,59 +62,51 @@
             <main class="main" id="main">
                 <div class="blog-main-content" id="blog-main-content">
                     <!-- <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script> -->
+                    <script>
+                        async function MDtoHtml(data) {
+                            await markdown.ready;
+
+                            var md = markdown.parse(md_data);
+                            md = md.replace('<table>', '<table border=\"1\">');
+                            md = md.replace('<h1>', '<h1 id=\"title\">');
+                            md = md.replace('<h2>', '<h2 class=\"headline\">');
+                            
+                            var hoge = document.getElementById('blog-main-content');
+                            hoge.innerHTML = md;
+                        }
+
+                        var md_data = "";
+
+                        const param = window.location.search;
+                        console.log(param);
+                        if(/\?n=\d/.test(param)) {
+                            console.log(param.replace('?n=', ''));
+                        }
+
+                        fetch('./page/blog_000/blog_000.md')
+                            .then(response => response.text())
+                            .then(data => {
+                                console.log(data); // ファイルの内容が表示されます
+                                md_data = data;
+
+                                MDtoHtml(data);
+                                // window.onload = async () => {
+                                //     await markdown.ready;
+
+                                //     var md = markdown.parse(md_data);
+                                //     console.log('result: ' + md);
+                                //     var hoge = document.getElementById('blog-main-content');
+                                //     hoge.innerHTML = md;
+                                // };     
+                            })
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    </script>
                 </div>
             </main>
         </div>
         <script src='https://cdn.jsdelivr.net/gh/rsms/markdown-wasm@v1.1.2/dist/markdown.js'></script>
-        <script>
-            // var sentence = "";
-            // var xhr = new XMLHttpRequest();
-            // xhr.open('GET', './temp.md', true);
-
-            // xhr.onload = function() {
-            //     if (xhr.status === 200) {
-            //         console.log(xhr.responseText); // ファイルの内容をコンソールに表示
-            //         sentence = xhr.responseText;
-            //     } else {
-            //         console.error(xhr.statusText);
-            //     }
-            // };
-
-            // xhr.send();
-
-            async function MDtoHtml(data) {
-                await markdown.ready;
-
-                var md = markdown.parse(md_data);
-                console.log('result: ' + md);
-                var hoge = document.getElementById('blog-main-content');
-                hoge.innerHTML = md;
-            }
-
-            var md_data = "";
-
-            fetch('./temp.md')
-                .then(response => response.text())
-                .then(data => {
-                    console.log(data); // ファイルの内容が表示されます
-                    md_data = data;
-
-                    MDtoHtml(data);
-                    // window.onload = async () => {
-                    //     await markdown.ready;
-
-                    //     var md = markdown.parse(md_data);
-                    //     console.log('result: ' + md);
-                    //     var hoge = document.getElementById('blog-main-content');
-                    //     hoge.innerHTML = md;
-                    // };     
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-
-                   
-        </script>
         <script src="../../scripts/script.js"></script>
     </body>
 </html>
