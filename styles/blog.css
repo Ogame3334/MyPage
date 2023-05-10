@@ -37,15 +37,41 @@
     box-shadow: 0px 0px 5px #7fffd480;
 }
 
+.blog-main-content-footer-button {
+    display: flex;
+}
+
 .blog-side-menu {
+    width: 25%;
+}
+
+.blog-side-menu-inner {
+    /* position: sticky;
+    top: 100px; */
     margin: 30px;
-    /* position: fixed;
-    top: 130px;
-    left: 2%; */
-    width: 20%;
+    width: auto;
     height: auto;
     padding: 30px;
     background-color: rgb(255, 255, 230);
+}
+
+.blog-side-menu-inner-headline {
+    position: sticky;
+    top: 130px;
+    margin: 30px;
+    width: auto;
+    height: auto;
+    padding: 30px;
+    background-color: rgb(255, 255, 230);
+}
+
+.blog-side-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.blog-side-menu a:hover {
+    color: gray;
 }
 
 h2.anchor {

@@ -51,8 +51,16 @@
                     </div>
                 </header>
             </div>
-            <main class="main" id="main" style="display: flex">
-                <div class="blog-side-menu" id="blog-side-menu"></div>
+            <main class="main" id="main" style="display: flex;">
+                <div class="blog-side-menu">
+                    <div class="blog-side-menu-inner">
+                        <!-- <h2>hoge</h2> -->
+                        <li><a href="../blog/">トップへ</a></li>
+                    </div>
+                    <div class="blog-side-menu-inner-headline" id="blog-side-menu-inner-headline">
+
+                    </div>
+                </div>
                 <div class="blog-main-content" id="blog-main-content">
                     <script>
                         class headline {
@@ -63,10 +71,10 @@
                         }
 
                         function gen_side_menu_html(headline_list) {
-                            var side_menu = document.getElementById('blog-side-menu');
+                            var side_menu = document.getElementById('blog-side-menu-inner-headline');
                             side_menu.innerHTML = "<h2>目次</h2>\n";
                             headline_list.forEach(element => {
-                                side_menu.innerHTML += `<a href="#${element.id_name}"><li>${element.sentence}</li></a>\n`
+                                side_menu.innerHTML += `<li><a href="#${element.id_name}">${element.sentence}</a></li>\n`
                             });
                         }
 
@@ -124,6 +132,10 @@
                         }
 
                     </script>
+                    <div class="blog-main-content-footer-button">
+                        <a>&lt;&lt; 前の記事へ</a>
+                        <a style="margin-left: auto;">次の記事へ &gt;&gt;</a>
+                    </div>
                 </div>
             </main>
         </div>
