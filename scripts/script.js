@@ -105,13 +105,12 @@ function onAccess() {
         start_up.remove();
         return;
     }
-    const sessionKey = 'ogamemidorikawa';
-    const sessionValue = 'true';
+    const sessionKey = 'anim';
     //sessionStorageにsessionKeyというデータの有無を判別
-    if (sessionStorage.getItem(sessionKey) != sessionValue) {
+    if (sessionStorage.getItem(sessionKey) == 'true') {
         startUpAnim();
         //sessionStorageにデータを追加
-        sessionStorage.setItem(sessionKey, sessionValue);
+        sessionStorage.setItem(sessionKey, 'false');
     }
     else {
         const start_up = document.getElementById('start-up');
