@@ -5,13 +5,8 @@ class headline {
     }
 }
 
-/* <div class="blog-main-content-footer-button">
-<a>&lt;&lt; 前の記事へ</a>
-<a style="margin-left: auto;">次の記事へ &gt;&gt;</a>
-</div> */
-
 function gen_footer(blog_num, page_num) {
-    const hoge = document.getElementById('blog-main-content');
+    const blog_main = document.getElementById('blog-main-content');
     var html_content = ""
     html_content += '<div class="blog-main-content-footer">'
     html_content += '<a href="../blog/">ブログ一覧</a>';
@@ -24,7 +19,7 @@ function gen_footer(blog_num, page_num) {
     }
     html_content += '</div>';
     html_content += '</div>';
-    hoge.innerHTML += html_content;
+    blog_main.innerHTML += html_content;
 }
 
 function gen_side_menu_html(headline_list) {
@@ -61,8 +56,8 @@ async function MDtoHtml(data, page_num) {
     
     gen_side_menu_html(headline_list);
 
-    const hoge = document.getElementById('blog-main-content');
-    hoge.innerHTML = md;
+    const blog_main = document.getElementById('blog-main-content');
+    blog_main.innerHTML = md;
 
     gen_footer(blog_num, page_num);
 }
@@ -94,5 +89,44 @@ if(/\?n=\d/.test(param)) {
         });
 }
 else{
+    class BlogPage {
+        constructor(title, date, id) {
+            this.title = title;
+            this.date = date;
+            this.id = id;
+        }
+        
+        toString() {
+            var html_content = `<a href="../blog/?n=${this.id}" class="blog-card">`;
+                html_content += '<div class="blog-card-title">';
+                    html_content += this.title;
+                html_content += '</div>';
+                html_content += '<div class="blog-card-date">';
+                    html_content += this.date;
+                html_content += '</div>';
+            html_content += '</a>';
 
+            return html_content;
+        }
+    }
+    const side_menu = document.getElementById('blog-side-menu');
+    side_menu.remove();
+    const blog_main = document.getElementById('blog-main-content');
+    blog_main.style.width = '70%';
+    blog_main.style.marginLeft = 'auto';
+    blog_main.style.marginRight = 'auto';
+
+    var blog_page_list = [];
+    blog_page_list.push(new BlogPage('一つ目あああああああああ', '2023/05/11', 0));
+    blog_page_list.push(new BlogPage('二つ目', '2023/05/11', 1));
+    blog_page_list.push(new BlogPage('三つ目', '2023/05/11', 2));
+
+    var html_content = '<div class="blog-main-container">';
+    html_content += '<div class="blog-main-container-headline">おがめのブログ</div>';
+    html_content += '<div class="blog-main-list">';
+    blog_page_list.forEach(element=>{html_content += element.toString()});
+    html_content += '</div>';
+    html_content += '</div>';
+
+    blog_main.innerHTML = html_content;
 }

@@ -37,6 +37,38 @@
     box-shadow: 0px 0px 5px #7fffd480;
 }
 
+.blog-main-container {
+    width: 100%;
+}
+
+.blog-main-container-headline {
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.blog-main-list {
+    display: flex;
+}
+
+.blog-card {
+    width: 20%;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.blog-card-title {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.blog-card-date {
+    text-align: right;
+}
+
 .blog-side-menu {
     width: 25%;
 }
