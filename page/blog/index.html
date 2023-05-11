@@ -62,80 +62,11 @@
                     </div>
                 </div>
                 <div class="blog-main-content" id="blog-main-content">
-                    <script>
-                        class headline {
-                            constructor(id_name, sentence) {
-                                this.id_name = id_name;
-                                this.sentence = sentence;
-                            }
-                        }
-
-                        function gen_side_menu_html(headline_list) {
-                            var side_menu = document.getElementById('blog-side-menu-inner-headline');
-                            side_menu.innerHTML = "<h2>目次</h2>\n";
-                            headline_list.forEach(element => {
-                                side_menu.innerHTML += `<li><a href="#${element.id_name}">${element.sentence}</a></li>\n`
-                            });
-                        }
-
-                        async function MDtoHtml(data) {
-                            var headline_list = [];
-
-                            await markdown.ready;
-
-                            var md = markdown.parse(md_data);
-                            md = md.replace('<table>', '<table border="1">');
-                            md = md.replace('<h1>', '<h1 id="title">');
-                            md = md.replaceAll('<a id="" class="anchor" aria-hidden="true" href="#"></a>', '');
-                            md = md.replaceAll('<h2>', '<h2 class="headline">');
-                            
-                            var i = 0;
-                            while(true) {
-                                var temp = md.replace('<h2 class="headline">', `<h2 class="headline anchor" id="headline-${i}">`);
-                                if(temp == md){
-                                    break;
-                                }
-                                var temp_headline_name = temp.split(`id="headline-${i}">`)[1].split('</h2>')[0];
-                                temp_headline = new headline(`headline-${i}`, temp_headline_name);
-                                headline_list.push(temp_headline);
-                                md = temp;
-                                i++;
-                            }
-                            
-                            gen_side_menu_html(headline_list);
-
-                            var hoge = document.getElementById('blog-main-content');
-                            hoge.innerHTML = md;
-                        }
-
-                        var md_data = "";
-
-                        var blog_num = "";
-
-                        const param = window.location.search;
-                        if(/\?n=\d/.test(param)) {
-                            blog_num = ('000' + param.replace('?n=', '')).slice(-3);
-                            
-                            fetch(`./page/blog_${blog_num}/blog_${blog_num}.md`)
-                                .then(response => response.text())
-                                .then(data => {
-                                    md_data = data;
-    
-                                    MDtoHtml(data);
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        }
-                        else{
-
-                        }
-
-                    </script>
-                    <div class="blog-main-content-footer-button">
+                    <script src="../../scripts/gen_blog.js"></script>
+                    <!-- <div class="blog-main-content-footer-button">
                         <a>&lt;&lt; 前の記事へ</a>
                         <a style="margin-left: auto;">次の記事へ &gt;&gt;</a>
-                    </div>
+                    </div> -->
                 </div>
             </main>
         </div>
