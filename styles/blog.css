@@ -56,6 +56,12 @@
     width: 20%;
     text-decoration: none;
     padding: 10px;
+    margin: 10px;
+    outline: solid 1px #cccccc;
+}
+
+.blog-card:hover {
+    background-color: #eeeeee;
 }
 
 .blog-card-title {
