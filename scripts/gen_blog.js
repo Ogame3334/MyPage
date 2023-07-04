@@ -117,9 +117,8 @@ else{
     blog_main.style.marginRight = 'auto';
 
     var blog_page_list = [];
-    blog_page_list.push(new BlogPage('一つ目あああああああああ', '2023/05/11', 0));
-    blog_page_list.push(new BlogPage('二つ目', '2023/05/11', 1));
-    blog_page_list.push(new BlogPage('三つ目', '2023/05/11', 2));
+    blog_page_list.push(new BlogPage('このサイトについて', '2023/05/11', 0));
+    blog_page_list.push(new BlogPage('C++のDrogonを使ってみた', '2023/07/04', 1));
 
     var html_content = '<div class="blog-main-container">';
     html_content += '<div class="blog-main-container-headline">おがめのブログ</div>';
